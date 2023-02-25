@@ -1,0 +1,63 @@
+*,
+*::after,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  font-size: 1.25rem;
+  line-height: 1.6rem;
+  padding: 20rem 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.person {
+  --speed: 0.2s;
+  --distance: -0.5rem;
+  max-width: 15rem;
+  margin-inline: auto;
+}
+
+.person__container {
+  position: relative;
+  aspect-ratio: 1 / 1.15;
+  border-radius: 0 0 100vw 100vw;
+  overflow: hidden;
+  transition: transform var(--speed) ease-in-out;
+}
+
+.person__container:hover {
+  transform: scale(1.1);
+}
+
+.person__circle {
+  position: absolute;
+  inset: auto 0 0;
+  margin-inline: auto; /* inset will enable the use of marigin */
+  width: 100%;
+  aspect-ratio: 1 / 1; /* to make the circle proportional */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.person__img {
+  position: absolute;
+  bottom: calc(var(--distance) * 2);
+  transform: scale(1.5);
+  transform-origin: bottom;
+  transition: transform calc(var(--speed) * 2) ease;
+}
+
+.person__container:hover .person__img {
+  transform: scale(1.5) translateY(var(--distance));
+}
